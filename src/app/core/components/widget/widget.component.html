@@ -1,0 +1,13 @@
+<div class="container mat-elevation-z3"
+[style.backgroundColor]="data().backgroundColor ?? 'white'"
+[style.color]="data().color ?? 'inherit'">
+    <div>
+        <span class="m-0">{{ data().label }}</span>
+
+        <span class="float-right">
+                <mat-icon>{{ data().icon }}</mat-icon>
+        </span>
+    </div>
+
+    <ng-container [ngComponentOutlet]="data().content" />
+</div>

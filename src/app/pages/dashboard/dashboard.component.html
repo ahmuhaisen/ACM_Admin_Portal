@@ -1,13 +1,11 @@
-<h4>Dashboard</h4>
+<h6>Panel Dashboard</h6>
 
-<div class="row">
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Card 1</mat-card-title>
-            <mat-card-subtitle>Card subtitle</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </mat-card-content>
-    </mat-card>
+
+<p class="welcome-note">Hi Ahmad, here you can see the latest updates and information about the chapter 🔥.</p>
+
+
+<div class="dashboard-widgets">
+    @for(widget of store.widgets(); track widget.id){
+    <app-widget [data]="widget"></app-widget>
+    }
 </div>

@@ -16,7 +16,7 @@
 }
 
 .selected-menu-item {
-   border-left: 5px solid var(--primary-color-dark) !important;
+   //border-left: 5px solid var(--primary-color-dark) !important;
    background-color: #fff !important;
 
    mat-icon, span {
@@ -33,10 +33,11 @@
 }
 
 a {
-    border-radius: 0 !important;
+    //border-radius: 0 !important;
 }
 
 .indented {
     margin-left: 16px;
-    width: calc(100% - 16px);
+    margin-right: 16px;
+    width: calc(100% - 32px);
 }
