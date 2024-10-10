@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UsersComponent } from './pages/users/users.component';
 import { MagazineComponent } from './pages/magazine/magazine.component';
+import { magazineRoutes } from './pages/magazine/magazine.routes';
 
 export const routes: Routes = [
     {
@@ -15,7 +16,8 @@ export const routes: Routes = [
     },
     {
         path: 'magazine',
-        component: MagazineComponent
+        component: MagazineComponent,
+        children: magazineRoutes
     },
     {
         path: 'users',

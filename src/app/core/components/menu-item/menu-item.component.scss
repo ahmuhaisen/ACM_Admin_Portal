@@ -1,0 +1,41 @@
+:host * {
+    transition: all 500ms ease-in-out;
+}
+
+.menu-item {
+    border-left: 5px solid transparent;
+
+    mat-icon, span {
+        color: var(--text-color) !important;
+    }
+
+    span {
+        font-size: 0.95rem;
+        padding-left: 8px;
+    }
+}
+
+.selected-menu-item {
+   border-left: 5px solid var(--primary-color-dark) !important;
+   background-color: #fff !important;
+
+   mat-icon, span {
+       color: var(--primary-color-dark) !important;
+   }
+}
+
+.selected-sub-menu-item {
+    background-color: #fff !important;
+
+    mat-icon, span {
+        color: var(--primary-color) !important;
+    }
+}
+
+a {
+    border-radius: 0 !important;
+}
+
+.indented {
+    margin-left: 16px;
+}

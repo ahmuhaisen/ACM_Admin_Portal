@@ -7,6 +7,7 @@ import { MenuItem } from '../../models/menu-item.model';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MenuItemComponent } from "../menu-item/menu-item.component";
 
 
 @Component({
@@ -18,8 +19,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     RouterLinkActive,
     MatListModule,
     MatIconModule,
-    MatTooltipModule
-  ],
+    MatTooltipModule,
+    MenuItemComponent
+],
   templateUrl: './custom-sidenav.component.html',
   styleUrl: './custom-sidenav.component.scss'
 })
@@ -39,7 +41,29 @@ export class CustomSidenavComponent {
     {
       icon: 'menu_book',
       label: 'Magazine',
-      route: 'magazine'
+      route: 'magazine',
+      subItems: [
+        {
+          icon: 'summarize',
+          label: 'Overview',
+          route: 'overview'
+        },
+        {
+          icon: 'book_5',
+          label: 'Issues',
+          route: 'issues'
+        },
+        {
+          icon: 'book_ribbon',
+          label: 'Articles',
+          route: 'articles'
+        },
+        {
+          icon: 'manage_accounts',
+          label: 'Volunteers',
+          route: 'volunteers'
+        }
+      ]
     },
     {
       icon: 'group',
