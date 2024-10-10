@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -17,7 +16,6 @@ import { ToolbarComponent } from "./core/components/toolbar/toolbar.component";
   imports: [
     CommonModule,
     RouterOutlet,
-    MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,

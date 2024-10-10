@@ -1,12 +1,15 @@
+import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, output } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterOutlet } from '@angular/router';
+
 import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.component';
-import { MatTooltip } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-toolbar',

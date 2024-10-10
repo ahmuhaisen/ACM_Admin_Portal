@@ -1,11 +1,12 @@
 <div class="sidenav-header">
-    <img
-    src="user-placeholder.png"
-    alt="user image"
-    [width]="profilePicSize()"
-    [height]="profilePicSize()"
-    [matTooltip]="sideNavCollapsed() ? '(Admin) Ahmad Muhaisen' : ''"
+    <img 
+        src="user-placeholder.png"
+        alt="user image"
+        [width]="profilePicSize()"
+        [height]="profilePicSize()"
+        [matTooltip]="sideNavCollapsed() ? '(Admin) Ahmad Muhaisen' : ''" 
     />
+
     <div class="header-text" [class.hide-header-text]="sideNavCollapsed()">
         <h2>Ahmad Muhaisen</h2>
         <p>Admin</p>
@@ -14,6 +15,6 @@
 
 <mat-nav-list>
     @for(item of menuItems(); track item.label){
-        <app-menu-item [item]="item" [collapsed]="sideNavCollapsed()"></app-menu-item>
+    <app-menu-item [item]="item" [collapsed]="sideNavCollapsed()"></app-menu-item>
     }
 </mat-nav-list>
