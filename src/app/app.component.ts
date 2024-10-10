@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { CustomSidenavComponent } from "./core/components/custom-sidenav/custom-sidenav.component";
+import { MatTooltip } from '@angular/material/tooltip';
+import { ToolbarComponent } from "./core/components/toolbar/toolbar.component";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,9 @@ import { CustomSidenavComponent } from "./core/components/custom-sidenav/custom-
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    CustomSidenavComponent
+    CustomSidenavComponent,
+    MatTooltip,
+    ToolbarComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -36,6 +40,10 @@ export class AppComponent {
       this.collapsed.set(true);
     }
 
+  }
+
+  onToggleCollapsed() {
+    this.collapsed.set(!this.collapsed());
   }
 }
 

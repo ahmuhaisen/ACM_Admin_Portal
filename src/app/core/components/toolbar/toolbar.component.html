@@ -1,0 +1,24 @@
+<mat-toolbar class="mat-elevation-z3">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSideNav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <img class="logo" src="acm_logo.png" alt="acm logo" width="40" height="40">
+
+        <span class="toolbar-title">{{ title }}</span>
+
+        <span class="spacer"></span>
+
+        <a href="#" mat-icon-button [matTooltip]="'Logout'">
+            <mat-icon matButton>logout</mat-icon>
+        </a>
+
+        <a href="#" mat-icon-button>
+            <mat-icon matButton [matTooltip]="'Your profile'">
+                person
+            </mat-icon>
+        </a>
+
+    </mat-toolbar-row>
+</mat-toolbar>
