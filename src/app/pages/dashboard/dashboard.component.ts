@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCommonModule } from '@angular/material/core';
-import { MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent } from '@angular/material/card';
+import { MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions } from '@angular/material/card';
 import { WidgetComponent } from "../../core/components/widget/widget.component";
 import { Widget } from '../../core/models/widget.model';
 import { DashboardService } from '../../core/services/dashboard.service';
+import { MatIcon } from '@angular/material/icon';
 
 
 @Component({
@@ -18,7 +19,9 @@ import { DashboardService } from '../../core/services/dashboard.service';
     MatCardTitle,
     MatCardSubtitle,
     MatCardContent,
-    WidgetComponent
+    MatCardActions,
+    WidgetComponent,
+    MatIcon
   ],
   providers: [
     DashboardService
