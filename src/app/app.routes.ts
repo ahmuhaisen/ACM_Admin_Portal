@@ -5,6 +5,7 @@ import { MagazineComponent } from './pages/magazine/magazine.component';
 import { magazineRoutes } from './pages/magazine/magazine.routes';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
+
 export const routes: Routes = [
     {
         path: '',
