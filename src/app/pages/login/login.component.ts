@@ -16,8 +16,11 @@ import { of } from 'rxjs';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
+  // use validators
   loginForm!: FormGroup
+
   loginResponse!: Observable<any>
+  
   constructor(private formBuilder: FormBuilder,
     private loginService: LoginAuthService,
     private router: Router) {
@@ -36,6 +39,8 @@ export class LoginComponent implements OnInit {
     let email = this.loginForm.get('email')?.value
     let password = this.loginForm.get('password')?.value
 
+    // 3aib 3alai etha mish min ChatGPT
+    // Read about: xxx.subscribe({error: ..., next: ..., complete: ...})
     this.loginService.post(email, password).pipe(
       tap((response) => {
         if (response.isAuthenticated) {
@@ -49,6 +54,7 @@ export class LoginComponent implements OnInit {
     ).subscribe();
   }
   private handleErrorResponse(errorResponse: HttpErrorResponse) {
+    // TODO: Show an error alert
     return errorResponse;
   }
 }
