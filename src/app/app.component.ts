@@ -9,6 +9,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CustomSidenavComponent } from "./core/components/custom-sidenav/custom-sidenav.component";
 import { MatTooltip } from '@angular/material/tooltip';
 import { ToolbarComponent } from "./core/components/toolbar/toolbar.component";
+import { LoginComponent } from './pages/login/login.component';
+import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -21,20 +24,23 @@ import { ToolbarComponent } from "./core/components/toolbar/toolbar.component";
     MatSidenavModule,
     CustomSidenavComponent,
     MatTooltip,
-    ToolbarComponent
-],
+    ToolbarComponent,
+    LoginComponent,
+    NgIf
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  
+
+  constructor(private router: Router) { }
   collapsed = signal(false);
-  
+
   sideNavWidth = computed(() => this.collapsed() ? '65px' : '270px');
 
-  ngAfterViewInit() { 
+  ngAfterViewInit() {
 
-    if(window.innerWidth < 600){
+    if (window.innerWidth < 600) {
       this.collapsed.set(true);
     }
 
@@ -42,6 +48,10 @@ export class AppComponent {
 
   onToggleCollapsed() {
     this.collapsed.set(!this.collapsed());
+  }
+
+  isLoginPage(): boolean {
+    return this.router.url == '/login'
   }
 }
 
