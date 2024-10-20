@@ -12,7 +12,6 @@ import { ToolbarComponent } from "./core/components/toolbar/toolbar.component";
 import { LoginComponent } from './pages/login/login.component';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
-
 @Component({
   selector: 'app-root',
   standalone: true,

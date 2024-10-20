@@ -1,37 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, tap } from 'rxjs';
-import { Pipe } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import { loginResponse } from '../../models/loginResponse.model';
+import { signal } from '@angular/core';
+import { environment } from '../../../../environments/environment.development';
+import { loginRequest } from '../../models/loginRequest';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginAuthService {
 
-  URL = 'https://localhost:7158/login'; // search for environments in angular
-  Response!: loginResponse;
+  endpoint = '/login';
+  Response = signal<loginResponse | null>(null);
+
   constructor(private httpClient: HttpClient) { }
 
-  // store the authenticated user data here as a signal
-  // ...
 
   post(email: string, password: string): Observable<loginResponse> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Not needed
-    const body = {
-      "email": email,
-      "password": password
-    } // make it strongly typed (e.g. (interface) => LoginRequest)
 
+    const body = <loginRequest>{
+      email: email,
+      password: password
+    }
 
-    return this.httpClient.post<loginResponse>(this.URL, body, { headers }).pipe(
-      tap((response: loginResponse) => {
-        localStorage.setItem('authToken', response.token);
-        this.Response = response;
-      }),
-    );
+    return this.httpClient.post<loginResponse>(
+      environment.domain + this.endpoint, body).pipe(
+        tap((response: loginResponse) => {
+          localStorage.setItem('authToken', response.token);
+          this.Response.set(response)
+        }),
+      );
+
   }
 
   getToken() {
-    return this.Response.token
+    return this.Response()
   }
 }

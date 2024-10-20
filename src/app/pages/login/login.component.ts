@@ -5,28 +5,26 @@ import { LoginAuthService } from '../../core/services/loginAuth/login-auth.servi
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs';
-import { catchError } from 'rxjs';
-import { of } from 'rxjs';
+import { Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  // use validators
   loginForm!: FormGroup
 
   loginResponse!: Observable<any>
-  
+  validSubmit: boolean = true;
   constructor(private formBuilder: FormBuilder,
     private loginService: LoginAuthService,
     private router: Router) {
     this.loginForm = this.formBuilder.group({
-      email: ['',],
-      password: ['']
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(7)]]
     })
   }
   ngOnInit(): void {
@@ -36,25 +34,30 @@ export class LoginComponent implements OnInit {
     }
   }
   onSubmit() {
+    this.validSubmit = this.loginForm.valid
+    if (!this.validSubmit)
+      return
     let email = this.loginForm.get('email')?.value
     let password = this.loginForm.get('password')?.value
 
-    // 3aib 3alai etha mish min ChatGPT
-    // Read about: xxx.subscribe({error: ..., next: ..., complete: ...})
-    this.loginService.post(email, password).pipe(
-      tap((response) => {
-        if (response.isAuthenticated) {
+
+    this.loginService.post(email, password).subscribe({
+      next: (response) => {
+        if (response.isAuthenticated)
           this.router.navigate(['dashboard']);
-        }
-      }),
-      catchError((error) => {
-        this.handleErrorResponse(error);
-        return of(null);
-      })
-    ).subscribe();
+      },
+      error: (errorMessage) => {
+        this.validSubmit = false;
+        this.handleErrorResponse(errorMessage);
+      },
+      complete: () => {
+      }
+
+    })
+
+
   }
   private handleErrorResponse(errorResponse: HttpErrorResponse) {
-    // TODO: Show an error alert
-    return errorResponse;
+    console.log(errorResponse.error)
   }
 }

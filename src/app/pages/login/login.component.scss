@@ -20,7 +20,18 @@
     margin-bottom: 1em;
 }
 
-body {
-    width: 100%;
-    background-image: url('../../../../public/acm_logo.png');
+.error-message {
+    color: #99312E;
+    font-size: small;
+    margin: 0 auto;
+    background-color: #FFDCE0;
+    height: 4em;
+    line-height: 4em;
+    padding-left: 0.5em;
+    border: 0.7px solid #99312E;
+    margin-bottom: 0.5em;
+}
+
+input {
+    padding-left: 0.5em;
 }
