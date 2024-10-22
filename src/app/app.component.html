@@ -1,17 +1,1 @@
-<div *ngIf="isLoginPage()">
-  <app-login></app-login>
-</div>
-
-<div *ngIf="!isLoginPage()">
-  <app-toolbar (collapsedChanged)="onToggleCollapsed()" />
-
-  <mat-sidenav-container>
-    <mat-sidenav opened mode="side" [style.width]="sideNavWidth()">
-      <app-custom-sidenav [collapsed]="collapsed()" />
-    </mat-sidenav>
-
-    <mat-sidenav-content class="content" [style.marginLeft]="sideNavWidth()">
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
+<router-outlet></router-outlet>

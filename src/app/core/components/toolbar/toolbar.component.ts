@@ -1,6 +1,6 @@
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Component, output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -31,8 +31,13 @@ export class ToolbarComponent {
   title = 'ACM JUSC Admin Portal';
 
   collapsedChanged = output();
+  router = inject(Router);
 
   toggleSideNav() {
     this.collapsedChanged.emit();
+  }
+
+  isLoginPage(): boolean {
+    return this.router.url == '/login'
   }
 }

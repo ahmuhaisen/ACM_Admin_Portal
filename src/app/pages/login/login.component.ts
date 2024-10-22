@@ -7,10 +7,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { ToolbarComponent } from "../../core/components/toolbar/toolbar.component";
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, ToolbarComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(7)]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.loginService.post(email, password).subscribe({
       next: (response) => {
         if (response.isAuthenticated)
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['portal/dashboard']);
       },
       error: (errorMessage) => {
         this.validSubmit = false;

@@ -1,36 +1,42 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { UsersComponent } from './pages/users/users.component';
-import { MagazineComponent } from './pages/magazine/magazine.component';
-import { magazineRoutes } from './pages/magazine/magazine.routes';
-import { LoginComponent } from './pages/login/login.component';
+
 import { AuthGuard } from './core/guards/auth.guard';
+import { UsersComponent } from './pages/users/users.component';
+import { LoginComponent } from './pages/login/login.component';
+import { PortalComponent } from './pages/portal/portal.component';
+import { magazineRoutes } from './pages/magazine/magazine.routes';
+import { MagazineComponent } from './pages/magazine/magazine.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'dashboard',
-    },
-    {
-        path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'magazine',
-        component: MagazineComponent,
-        canActivate: [AuthGuard],
-        children: magazineRoutes
-    },
-    {
-        path: 'users',
-        component: UsersComponent,
-        canActivate: [AuthGuard]
-    },
-    {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'portal',
+        component: PortalComponent,
+        canActivate: [AuthGuard],
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'dashboard',
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+            },
+            {
+                path: 'magazine',
+                component: MagazineComponent,
+                children: magazineRoutes
+            },
+            {
+                path: 'users',
+                component: UsersComponent,
+            }
+        ]
     }
 
 ];

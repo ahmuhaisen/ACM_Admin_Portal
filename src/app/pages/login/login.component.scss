@@ -3,35 +3,3 @@
 @import "tailwindcss/utilities";
 
 // Tailwind caused some issues with the previous design, so temporarily, I used it only here
-#login-form {
-    border: 1px solid black;
-    height: auto;
-    width: 25%;
-    margin: 0 auto;
-    border-radius: 10%;
-
-}
-
-.top {
-    width: 100%;
-    height: 6em;
-    background-color: blue;
-    margin: 0 auto;
-    margin-bottom: 1em;
-}
-
-.error-message {
-    color: #99312E;
-    font-size: small;
-    margin: 0 auto;
-    background-color: #FFDCE0;
-    height: 4em;
-    line-height: 4em;
-    padding-left: 0.5em;
-    border: 0.7px solid #99312E;
-    margin-bottom: 0.5em;
-}
-
-input {
-    padding-left: 0.5em;
-}

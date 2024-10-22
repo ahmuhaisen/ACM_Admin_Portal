@@ -1,12 +1,16 @@
 <mat-toolbar class="mat-elevation-z3">
     <mat-toolbar-row>
+        @if(!isLoginPage()) {
         <button mat-icon-button (click)="toggleSideNav()">
             <mat-icon>menu</mat-icon>
         </button>
+        }
+
 
         <img class="logo col-span-1" src="acm_logo.png" alt="acm logo" width="40" height="40">
         <span class="toolbar-title col-span-11">{{ title }}</span>
 
+        @if(!isLoginPage()) {
         <span class="spacer"></span>
 
         <div>
@@ -20,6 +24,6 @@
                 </mat-icon>
             </a>
         </div>
-
+    }
     </mat-toolbar-row>
 </mat-toolbar>
